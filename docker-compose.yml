@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  starwarsapiwrapper:
+    image: ${DOCKER_REGISTRY-}starwarsapiwrapper
+    build:
+      context: .
+      dockerfile: Star Wars API Wrapper\Dockerfile

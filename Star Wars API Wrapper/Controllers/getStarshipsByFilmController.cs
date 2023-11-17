@@ -22,6 +22,7 @@ namespace Star_Wars_API_Wrapper.Controllers
 
         }
 
+        //Retrieves a list of starships in a film specified by id
         [HttpGet("films/{id}/starships")]
         public async Task<IActionResult> GetStarshipsForFilm(int id)
         {
@@ -33,8 +34,9 @@ namespace Star_Wars_API_Wrapper.Controllers
                     return Ok(starships);
                 }
 
-                var cacheKey = $"FilmCharacters_{id}";
+                var cacheKey = $"FilmStarships_{id}";
 
+                // Fetches data from the external API if cache is timed out
                 var filmsJson = await _filmService.GetSpecifiedJson($"films/{id}/");
 
                 if (filmsJson != null)
@@ -43,15 +45,16 @@ namespace Star_Wars_API_Wrapper.Controllers
 
                     var starshipsUrls = ((IEnumerable<dynamic>)film.starships).Select(starship => starship.ToString());
 
-                    // Retrieve details for each character
+                    // Retrieve details for each starship
                     starships = new List<string>();
                     foreach (var starshipUrl in starshipsUrls)
                     {
                         var starshipJson = await _filmService.GetSpecifiedJson(starshipUrl);
                         var starship = JsonConvert.DeserializeObject<dynamic>(starshipJson);
-                        starships.Add(starship.name.ToString());
+                        starships.Add(starship.name.ToString()); //Returns only the name of the starships
                     }
 
+                    //Store data in cache for future use
                     _memoryCache.Set($"Film_{id}_Characters", starships, TimeSpan.FromMinutes(5));
 
                     return Ok(starships);

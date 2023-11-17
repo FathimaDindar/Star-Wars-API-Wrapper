@@ -34,7 +34,7 @@ namespace Star_Wars_API_Wrapper.Controllers
                     return Ok(characters);
                 }
 
-                // Cache miss: fetch data from the external API
+                // Fetches data from the external API if cache is timed out
                 var filmsJson = await _filmService.GetSpecifiedJson($"films/{id}/");
 
                 if (filmsJson != null)

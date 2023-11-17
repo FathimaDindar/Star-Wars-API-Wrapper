@@ -31,11 +31,13 @@ namespace Star_Wars_API_Wrapper.Controllers
         {
             try
             {
+                // Returns list if the list is already in memory
                 if (_memoryCache.TryGetValue($"Film", out List<string> filmTitles))
                 {
                     return Ok(filmTitles);
                 }
 
+                // Fetches data from the external API if cache is timed out
                 var filmsJson = await _filmService.GetSpecifiedJson($"films/");
 
                 if (filmsJson != null)

@@ -2,6 +2,7 @@ The API has been deployed to a cloud service provider and can be accessed using 
 
 Alternatively, the 'Star Wars API Wrapper.sln' can be opened in Visual Studio and can be built and deployed from there.
 
+For further information on the functionality of the wrapper, refer to the document title 'API Explanation and Demonstration'.
 
 Description of the architecture:
 

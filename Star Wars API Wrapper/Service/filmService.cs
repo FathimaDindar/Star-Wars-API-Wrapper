@@ -14,7 +14,7 @@ namespace Star_Wars_API_Wrapper.Service
             _httpClient = httpClient;
         }
 
-        //Performs an asynchronous HTTP GET request to the url specified in the controller using and instance of HttpClient
+        //Performs an asynchronous HTTP GET request to the url specified in the controller using an instance of HttpClient
         public async Task<string> GetSpecifiedJson(string Url)
         {
             var response = await _httpClient.GetAsync(Url);

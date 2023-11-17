@@ -4,9 +4,10 @@
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>Star_Wars_API_Wrapper</RootNamespace>
+    <RootNamespace>StarWarsAPIWrapper</RootNamespace>
     <UserSecretsId>6c259943-ffe5-46f8-a347-2f56ba64b57b</UserSecretsId>
     <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
+    <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>
 
   <ItemGroup>
